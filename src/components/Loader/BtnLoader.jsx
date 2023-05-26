@@ -1,6 +1,6 @@
 import { RotatingLines } from 'react-loader-spinner';
 
-export const ButtonLoader = () => (
+export const BtnLoader = () => (
   <RotatingLines
     strokeColor="grey"
     strokeWidth="5"

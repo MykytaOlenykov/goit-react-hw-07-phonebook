@@ -1,18 +1,13 @@
 import styled from 'styled-components';
 
-export const ContactCard = styled.div`
-  position: relative;
-
+export const Card = styled.div`
   display: flex;
   gap: 10px;
-  justify-content: center;
-  align-items: start;
-  flex-direction: column;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   max-width: 400px;
   width: 100%;
-  min-height: 54px;
-  padding: 8px 100px 8px 16px;
+  padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.primaryBg};
   border-radius: 8px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -20,10 +15,6 @@ export const ContactCard = styled.div`
 `;
 
 export const Button = styled.button`
-  position: absolute;
-  top: 8px;
-  right: 16px;
-
   display: flex;
   align-items: center;
   gap: 4px;
@@ -42,6 +33,6 @@ export const Button = styled.button`
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.8;
   }
 `;

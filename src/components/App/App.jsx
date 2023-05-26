@@ -1,16 +1,23 @@
-import { Toaster } from 'react-hot-toast';
+import { Toaster, toast } from 'react-hot-toast';
 import { useFetchContactsQuery } from 'redux/contactsSlice';
 import { ContactForm } from 'components/ContactForm';
 import { Filter } from 'components/Filter';
 import { ContactList } from 'components/ContactList';
-import { Loader } from 'components/Loaders';
-import { ErrorMessage } from 'components/ErrorMessage';
+import { Loader } from 'components/Loader';
 import { GlobalStyle } from 'components/GlobalStyle';
 import * as S from './App.styled';
+import { useEffect } from 'react';
 
 export const App = () => {
-  const { data, error, isSuccess, isError, isFetching } =
-    useFetchContactsQuery();
+  const { data, isSuccess, isError, isFetching } = useFetchContactsQuery();
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(
+        'Something went wrong while uploading contacts, please try again later.'
+      );
+    }
+  }, [isError]);
 
   return (
     <S.Container>
@@ -28,7 +35,6 @@ export const App = () => {
 
       <Filter />
 
-      {isError && <ErrorMessage errorText={`Error: ${error.status}`} />}
       {isSuccess && <ContactList contacts={data} />}
     </S.Container>
   );
