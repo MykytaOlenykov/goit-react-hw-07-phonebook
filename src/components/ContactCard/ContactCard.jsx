@@ -17,7 +17,7 @@ export const ContactCard = ({ contactId, name, number }) => {
     }
   }, [isError]);
 
-  const handleDelete = async contactId => {
+  const handleDeleteContact = async contactId => {
     await deleteContact(contactId);
   };
 
@@ -28,10 +28,10 @@ export const ContactCard = ({ contactId, name, number }) => {
       </p>
       <S.Button
         type="button"
-        onClick={() => handleDelete(contactId)}
+        onClick={() => handleDeleteContact(contactId)}
         disabled={isDeleting}
       >
-        {isDeleting && <BtnLoader />} Delete
+        {isDeleting && <BtnLoader />}Delete
       </S.Button>
     </S.Card>
   );
