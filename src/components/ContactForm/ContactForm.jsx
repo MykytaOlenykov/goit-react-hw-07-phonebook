@@ -18,16 +18,20 @@ const validatePattern = {
 const errorMessage = {
   name: "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
   number:
-    'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
+    'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +, the number of digits must be at least 5',
 };
 
 const schema = yup.object().shape({
   name: yup
     .string()
+    .trim()
+    .min(2)
+    .max(255)
     .matches(validatePattern.name, errorMessage.name)
     .required(),
   number: yup
     .string()
+    .max(20)
     .matches(validatePattern.number, errorMessage.number)
     .required(),
 });
