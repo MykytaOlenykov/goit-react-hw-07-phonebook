@@ -6,7 +6,6 @@ import * as yup from 'yup';
 import PropTypes from 'prop-types';
 import { useAddContactMutation } from 'redux/contactsSlice';
 import { BtnLoader } from 'components/Loader';
-import { getNormalizedName } from 'utils';
 import * as S from './ContactForm.styled';
 
 const validatePattern = {
@@ -64,7 +63,7 @@ export const ContactForm = ({ contacts }) => {
   }, [isError]);
 
   const onSubmit = async ({ name, number }) => {
-    const normalizedName = getNormalizedName(name);
+    const normalizedName = name.trim();
 
     if (contactValidationByName(normalizedName)) {
       toast.error(`${normalizedName} is already in contacts.`);
@@ -99,7 +98,7 @@ export const ContactForm = ({ contacts }) => {
       </S.Label>
 
       <S.Button type="submit" disabled={isAdding}>
-        {isAdding && <BtnLoader />} Add contact
+        {isAdding && <BtnLoader />}Add contact
       </S.Button>
     </S.ContactForm>
   );
